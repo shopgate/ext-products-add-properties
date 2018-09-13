@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0-beta.1",
+  "id": "@shopgate/products-add-properties",
+  "components": [],
+  "configuration": {
+    "addProperties": {
+      "type": "admin",
+      "destination": "backend",
+      "default": "",
+      "params": {
+        "type": "textbox",
+        "label": "List of properties to add",
+        "required": false,
+        "options": {
+          "placeholder": {
+            "en": "Weight,Width,Height"
+          }
+        }
+      }
+    }
+  },
+  "steps": [
+    {
+      "path": "extension/addProperties.js",
+      "hooks": ["shopgate.catalog.getProducts.v1:afterFetchProducts"],
+      "input": [
+        {
+          "key": "products"
+        }
+      ],
+      "output": [
+        {
+          "key": "products"
+        }
+      ]
+    }
+  ]
+}
