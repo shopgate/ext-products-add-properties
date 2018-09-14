@@ -1,6 +1,5 @@
 const assert = require('assert')
-const proxyquire = require('proxyquire')
-
+const subjectUnderTest = require('../../addProperties')
 const getProductsResult = () => ({
   products: [
     {
@@ -25,13 +24,11 @@ const getProductsResult = () => ({
 
 describe('addProperties', () => {
   it('should add properties if they are configured', async () => {
-    let subjectUnderTest = proxyquire('./../../addProperties', {
-      './config': {
+    const { products } = await subjectUnderTest({
+      'config': {
         addProperties: 'foo,added'
       }
-    })
-
-    const { products } = await subjectUnderTest({}, getProductsResult())
+    }, getProductsResult())
     assert.deepEqual(products[0].additionalProperties, [
       {
         label: 'added',
@@ -44,25 +41,60 @@ describe('addProperties', () => {
     ])
   })
 
+  it('should add properties if they are configured - independent of case', async () => {
+    const { products } = await subjectUnderTest({
+      'config': {
+        addProperties: 'foo,Added'
+      }
+    }, getProductsResult())
+    assert.deepEqual(products[0].additionalProperties, [
+      {
+        label: 'added',
+        value: 'added'
+      },
+      {
+        label: 'foo',
+        value: 'bar'
+      }
+    ])
+  })
+
+  it('should add properties if they are configured - independent of case', async () => {
+    const input = getProductsResult()
+    input.products[0].properties[0].label = 'Added'
+
+    const { products } = await subjectUnderTest({
+      'config': {
+        addProperties: 'foo,added'
+      }
+    }, input)
+    assert.deepEqual(products[0].additionalProperties, [
+      {
+        label: 'Added',
+        value: 'added'
+      },
+      {
+        label: 'foo',
+        value: 'bar'
+      }
+    ])
+  })
+
   it('should not do anything if no property is matched', async () => {
-    let subjectUnderTest = proxyquire('./../../addProperties', {
-      './config': {
+    const { products } = await subjectUnderTest({
+      'config': {
         addProperties: 'nomatch,nonomatch'
       }
-    })
-
-    const { products } = await subjectUnderTest({}, getProductsResult())
+    }, getProductsResult())
     assert.deepEqual({ products }, getProductsResult())
   })
 
   it('should not do anything if no property is configured to be added', async () => {
-    let subjectUnderTest = proxyquire('./../../addProperties', {
-      './config': {
+    const { products } = await subjectUnderTest({
+      'config': {
         addProperties: ''
       }
-    })
-
-    const { products } = await subjectUnderTest({}, getProductsResult())
+    }, getProductsResult())
     assert.deepEqual({ products }, getProductsResult())
   })
 })
