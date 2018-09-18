@@ -1,0 +1,26 @@
+{
+  "name": "@shopgate/products-add-properties",
+  "version": "1.0.0-beta.1",
+  "description": "Shopgate products property extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shopgate/ext-product-add-properties.git"
+  },
+  "scripts": {
+    "test": "mocha --use_strict recursive test/unit",
+    "coverage": "nyc mocha --use_strict recursive test/unit",
+    "coverage-html": "nyc --reporter=html --report-dir=test/coverage mocha --use_strict recursive test/unit",
+    "standard": "./node_modules/.bin/standard"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "standard": "^12.0",
+    "mocha": "^4.0",
+    "nyc": "latest"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}

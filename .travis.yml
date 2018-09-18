@@ -1,0 +1,9 @@
+language: node_js
+node_js: 9
+
+install:
+  - cd extension; npm install; cd ..
+
+script:
+  - cd extension; npm audit; cd ..
+  - cd extension; npm run coverage; cd ..
