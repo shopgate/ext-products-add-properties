@@ -29,7 +29,7 @@ describe('addProperties', () => {
         addProperties: 'foo,added'
       }
     }, getProductsResult())
-    assert.deepEqual(products[0].additionalProperties, [
+    assert.deepStrictEqual(products[0].additionalProperties, [
       {
         label: 'added',
         value: 'added'
@@ -47,7 +47,7 @@ describe('addProperties', () => {
         addProperties: 'foo,Added'
       }
     }, getProductsResult())
-    assert.deepEqual(products[0].additionalProperties, [
+    assert.deepStrictEqual(products[0].additionalProperties, [
       {
         label: 'added',
         value: 'added'
@@ -68,7 +68,7 @@ describe('addProperties', () => {
         addProperties: 'foo,added'
       }
     }, input)
-    assert.deepEqual(products[0].additionalProperties, [
+    assert.deepStrictEqual(products[0].additionalProperties, [
       {
         label: 'Added',
         value: 'added'
@@ -86,7 +86,7 @@ describe('addProperties', () => {
         addProperties: 'nomatch,nonomatch'
       }
     }, getProductsResult())
-    assert.deepEqual({ products }, getProductsResult())
+    assert.deepStrictEqual({ products }, getProductsResult())
   })
 
   it('should not do anything if no property is configured to be added', async () => {
@@ -95,6 +95,6 @@ describe('addProperties', () => {
         addProperties: ''
       }
     }, getProductsResult())
-    assert.deepEqual({ products }, getProductsResult())
+    assert.deepStrictEqual({ products }, getProductsResult())
   })
 })
