@@ -1,7 +1,8 @@
 language: node_js
-node_js: 10
+node_js: 8
 install:
 - cd extension; npm install; cd ..
+- npm i -g npm
 script:
 - cd extension; npm audit; cd ..
 - cd extension; npm run standard; cd ..
