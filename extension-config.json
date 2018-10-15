@@ -35,6 +35,21 @@
       ]
     },
     {
+      "path": "extension/addPropertiesToGetProduct.js",
+      "hooks": ["shopgate.catalog.getProduct.v1:afterFetchProducts"],
+      "input": [
+        {
+          "key": "products"
+        }
+      ],
+      "output": [
+        {
+          "key": "additionalProperties",
+          "addPipelineOutput": true
+        }
+      ]
+    },
+    {
       "path": "extension/addPropertiesToCartItems.js",
       "hooks": ["shopgate.cart.getCart.v1:afterFetchCart"],
       "input": [
