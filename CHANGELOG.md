@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.2] - 2018-10-15
+### Added
+- additionalProperties for getProduct via override of pipeline
+
 ## [1.0.1] - 2018-10-01
 ### Added
 - additionalProperties for cartItems
