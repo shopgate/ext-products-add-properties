@@ -6,6 +6,19 @@
 
 Adds custom properties to products.
 
+## Configuration
+
+Set the following values in your Shopgate Connect Admin:
+* `addProperties` - (text) Comma-separated list of properties to add
+
+### Example
+
+```json
+{
+    "addProperties":"Weight,Width,Height"
+}
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) file for more information.
