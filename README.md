@@ -1,7 +1,10 @@
-# Shopgate Connect - Extension products add properties
-[![GitHub license](http://dmlc.github.io/img/apache2.svg)](LICENSE.md)
+# Shopgate Connect - Additional Product Properties Extension
+
+[![GitHub license](http://dmlc.github.io/img/apache2.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/shopgate/ext-products-add-properties.svg?branch=master)](https://travis-ci.org/shopgate/ext-magento-favorites)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/ext-products-add-properties/badge.svg?branch=master)](https://coveralls.io/github/shopgate/ext-products-add-properties?branch=master)
+
+Adds custom properties to products.
 
 ## Changelog
 
@@ -21,6 +24,6 @@ apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
-Shopgate Connect - Extension products add properties is available under the Apache License, Version 2.0.
+This extension is available under the Apache License, Version 2.0.
 
-See the [LICENSE](./LICENSE.md) file for more information.
+See the [LICENSE](./LICENSE) file for more information.
