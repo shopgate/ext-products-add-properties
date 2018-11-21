@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3-beta.1",
   "id": "@shopgate/products-add-properties",
   "components": [],
   "configuration": {
@@ -22,7 +22,10 @@
   "steps": [
     {
       "path": "extension/addProperties.js",
-      "hooks": ["shopgate.catalog.getProducts.v1:afterFetchProducts"],
+      "hooks": [
+        "shopgate.catalog.getProducts.v1:afterFetchProducts",
+        "shopgate.catalog.getProductsByIds.v1:afterFetchProducts"
+      ],
       "input": [
         {
           "key": "products"
