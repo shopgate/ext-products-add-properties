@@ -25,7 +25,7 @@ const getProductsResult = () => ({
 describe('addProperties', () => {
   it('should add properties if they are configured', async () => {
     const { products } = await subjectUnderTest({
-      'config': {
+      config: {
         addProperties: 'foo,added'
       }
     }, getProductsResult())
@@ -43,7 +43,7 @@ describe('addProperties', () => {
 
   it('should add properties if they are configured - independent of case', async () => {
     const { products } = await subjectUnderTest({
-      'config': {
+      config: {
         addProperties: 'foo,Added'
       }
     }, getProductsResult())
@@ -64,7 +64,7 @@ describe('addProperties', () => {
     input.products[0].properties[0].label = 'Added'
 
     const { products } = await subjectUnderTest({
-      'config': {
+      config: {
         addProperties: 'foo,added'
       }
     }, input)
@@ -82,7 +82,7 @@ describe('addProperties', () => {
 
   it('should not do anything if no property is matched', async () => {
     const { products } = await subjectUnderTest({
-      'config': {
+      config: {
         addProperties: 'nomatch,nonomatch'
       }
     }, getProductsResult())
@@ -91,7 +91,7 @@ describe('addProperties', () => {
 
   it('should not do anything if no property is configured to be added', async () => {
     const { products } = await subjectUnderTest({
-      'config': {
+      config: {
         addProperties: ''
       }
     }, getProductsResult())

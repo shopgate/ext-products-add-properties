@@ -1,6 +1,6 @@
 module.exports = async (context, input) => {
   const { config } = context
-  let { products } = input
+  const { products } = input
 
   const addProperties = config.addProperties.split(',')
     .filter(val => val) // remove empty values
