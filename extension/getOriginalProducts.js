@@ -3,10 +3,16 @@ const getApiClient = require('./api/getApiClient')
 /**
  * @param {Object} context
  * @param {{ cartItems }} input
- * @returns {Promise<{cartItems: *}>}
+ * @returns {Promise<{products: Object[]}>}
  */
 module.exports = async (context, { cartItems: inputCartItems }) => {
-  const withoutShopItem = inputCartItems.filter(cartItem => !cartItem.product.shopItem)
+  const cartProducts = inputCartItems.filter(cartItem => cartItem.type === 'product')
+
+  let products = cartProducts
+    .filter(cartItem => !!cartItem.product.shopItem)
+    .map(cartItem => cartItem.product.shopItem)
+
+  const withoutShopItem = cartProducts.filter(cartItem => !cartItem.product.shopItem)
   if (withoutShopItem.length) {
     const productIds = withoutShopItem.map(cartItem => encodeURIComponent(cartItem.product.id))
 
@@ -23,15 +29,13 @@ module.exports = async (context, { cartItems: inputCartItems }) => {
         }
       })
 
-      withoutShopItem.forEach(cartItem => {
-        cartItem.product.shopItem = collection.find(p => p.id === cartItem.product.id)
-      })
+      products = products.concat(collection)
     } catch (err) {
       context.log.warn(err, 'Error requesting bigapi for original products')
     }
   }
 
   return {
-    cartItems: inputCartItems
+    products
   }
 }

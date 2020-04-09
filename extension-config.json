@@ -57,14 +57,8 @@
       ]
     },
     {
-      "path": "extension/addOriginalProductToCartItems.js",
-      "hooks": ["shopgate.cart.getCart.v1:afterFetchCart"],
-      "input": [{ "key": "cartItems" }],
-      "output": [{ "key": "cartItems"} ]
-    },
-    {
       "path": "extension/addPropertiesToCartItems.js",
-      "hooks": ["shopgate.cart.getCart.v1:afterFetchCart"],
+      "hooks": ["shopgate.cart.getCart.v1:after"],
       "input": [{ "key": "cartItems" }],
       "output": [{ "key": "cartItems" }]
     }
