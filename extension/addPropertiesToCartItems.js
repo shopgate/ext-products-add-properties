@@ -1,21 +1,41 @@
+const getOriginalProducts = require('./getOriginalProducts')
+
 module.exports = async (context, input) => {
   const { config } = context
-  let { cartItems } = input
+  const { cartItems } = input
 
-  const addProperties = config.addProperties.split(',').filter(val => val).map(val => val.toLowerCase())
+  const { products } = await getOriginalProducts(context, input)
 
-  if (addProperties.length === 0) return { cartItems }
+  const addProperties = config
+    .addProperties
+    .split(',')
+    .map(p => p.trim())
+    .filter(Boolean)
+    .map(val => val.toLowerCase())
 
-  cartItems = cartItems.map(cartItem => {
-    if (!cartItem.product || !cartItem.product.shopItem) return cartItem
+  if (addProperties.length === 0) {
+    return { cartItems }
+  }
 
-    const additionalProperties = cartItem.product.shopItem.properties.filter(prop =>
+  cartItems.forEach(cartItem => {
+    if (cartItem.type !== 'product') {
+      return
+    }
+    const product = products.find(p => p.id === cartItem.product.id)
+    if (!product) {
+      return
+    }
+
+    const additionalProperties = product.properties.filter(prop =>
       addProperties.includes(prop.label.toLowerCase())
     )
 
-    if (additionalProperties.length) { Object.assign(cartItem.product, { additionalProperties }) }
-
-    return cartItem
+    if (additionalProperties.length) {
+      cartItem.product = {
+        ...cartItem.product,
+        additionalProperties
+      }
+    }
   })
 
   return { cartItems }
