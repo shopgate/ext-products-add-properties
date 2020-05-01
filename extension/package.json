@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "mocha --use_strict --recursive test/unit",
-    "standard": "standard"
+    "standard": "standard",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -22,6 +24,8 @@
     ]
   },
   "dependencies": {
-    "@shopgate/bigapi-requester": "^3.1.1"
-  }
+    "@shopgate/bigapi-requester": "^3.1.1",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
