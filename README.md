@@ -9,13 +9,40 @@ Adds custom properties to products.
 ## Configuration
 
 Set the following values in your Shopgate Connect Admin:
-* `addProperties` - (text) Comma-separated list of properties to add
+* `addProperties` - (csv string) Comma-separated list of properties to add
 
-### Example
+### Example of configuration
 
 ```json
 {
-    "addProperties":"Weight,Width,Height"
+    "addProperties":"Weight,Width,Height,ISBN"
+}
+```
+
+### Example of product data with custom properties
+
+```
+{
+  "id": "Product id",
+  ...
+  "additionalProperties": [
+    {
+      "label": "Weight",
+      "value": "0.2kg"
+    },
+    {
+      "label": "Width",
+      "value": "120 cm"
+    },
+    {
+      "label": "Height",
+      "value": "100 cm"
+    },
+    {
+      "label": "ISBN",
+      "value": "978-3-16-148410-0"
+    }
+  ]
 }
 ```
 

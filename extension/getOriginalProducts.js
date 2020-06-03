@@ -1,4 +1,4 @@
-const getApiClient = require('./api/getApiClient')
+const getProductsByIds = require('./getProductsByIds')
 
 /**
  * @param {Object} context
@@ -16,23 +16,9 @@ module.exports = async (context, { cartItems: inputCartItems }) => {
   if (withoutShopItem.length) {
     const productIds = withoutShopItem.map(cartItem => encodeURIComponent(cartItem.product.id))
 
-    const apiClient = getApiClient(context)
+    const { collection } = await getProductsByIds(context, { productIds })
 
-    try {
-      const { body: { collection = [] } } = await apiClient.request({
-        service: 'product',
-        version: 'v1',
-        path: `${context.meta.appId.split('_')[1]}/products`,
-        method: 'GET',
-        query: {
-          productNumbers: productIds.join(',')
-        }
-      })
-
-      products = products.concat(collection)
-    } catch (err) {
-      context.log.warn(err, 'Error requesting bigapi for original products')
-    }
+    products = products.concat(collection)
   }
 
   return {
