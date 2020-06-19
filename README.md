@@ -6,6 +6,11 @@
 
 Adds custom properties to products.
 
+## Version 2.0.0
+
+Repository is moved to [Shopgate professional services account](https://github.com/shopgate-professional-services/ext-product-properties)  
+The version 2.0.0 and later will be available at new scope `@shopgate-project`
+
 ## Configuration
 
 Set the following values in your Shopgate Connect Admin:
