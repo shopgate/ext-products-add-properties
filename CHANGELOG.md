@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.1.1] - 2020-08-20
+## [1.1.2] - 2020-08-20
 ### Changed
 - Fixed memory leak in API handling
 
@@ -28,7 +28,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Initial implementation of the extension
 
-[1.1.1]: https://github.com/shopgate/ext-products-add-properties/compare/v1.1.0...v1.1.1
+[1.1.2]: https://github.com/shopgate/ext-products-add-properties/compare/v1.1.1...v1.1.2
 [1.1.0]: https://github.com/shopgate/ext-products-add-properties/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/shopgate/ext-products-add-properties/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/shopgate/ext-products-add-properties/compare/v1.0.1...v1.0.2
